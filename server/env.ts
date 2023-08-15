@@ -8,7 +8,7 @@ interface EnvVar {
 
 // track env dependencies when in debug mode
 let envs = new Map<string, EnvVar>();
-const isProd = getEnv("PRODUCTION") === "true";
+const isProd = process.env["PRODUCTION"] === "true";
 
 /**
  * Get a variable from the environment

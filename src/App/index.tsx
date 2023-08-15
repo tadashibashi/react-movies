@@ -2,26 +2,32 @@ import React, {createContext, useState} from 'react';
 import {Routes, Route} from "react-router-dom";
 
 import './App.css';
-import {ActorListPage, ErrorPage, LoginPage, MovieDetailPage, MoviesListPage} from "../pages";
+import {
+    ActorListPage, ActorDetailPage,
+    ErrorPage, LoginPage,
+    MovieDetailPage, MoviesListPage,
+} from "../pages";
+
 import NavBar from "../components/NavBar";
 
 interface User {
     username: string;
 }
 
-interface UserContext {
-    login: (username: string) => void;
+export interface UserContext {
+    login: (username: string, password: string) => void;
     logout: () => void;
     user: User | null;
 }
 
-export const UserContext = createContext(null as null|UserContext);
+// @ts-ignore
+export const UserContext = createContext(null as UserContext);
 
 function App() {
     const [user, setUser] = useState(null as null|User);
 
     // naive login for testing
-    function login(username: string) {
+    function login(username: string, password: string) {
         setUser({username});
     }
 
@@ -34,6 +40,7 @@ function App() {
         <Routes>
             <Route path="/" element={<MoviesListPage />} />
             <Route path="/actors" element={<ActorListPage />} />
+            <Route path="/actors/:actor" element={<ActorDetailPage />} />
             <Route path="/movies/:movieName" element={<MovieDetailPage/>} />
             <Route path="*" element={<ErrorPage code={404} message="Page not found." />} />
         </Routes>;
