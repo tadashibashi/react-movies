@@ -1,4 +1,4 @@
-import "./ActorListPage.css";
+import "./ActorDetailPage.css";
 import {useParams} from "react-router-dom";
 
 export default function ActorDetailPage() {

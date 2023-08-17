@@ -41,7 +41,7 @@ function App() {
             <Route path="/" element={<MoviesListPage />} />
             <Route path="/actors" element={<ActorListPage />} />
             <Route path="/actors/:actor" element={<ActorDetailPage />} />
-            <Route path="/movies/:movieName" element={<MovieDetailPage/>} />
+            <Route path="/movies/:id" element={<MovieDetailPage/>} />
             <Route path="*" element={<ErrorPage code={404} message="Page not found." />} />
         </Routes>;
 
